@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:numfu/screen/Test.dart';
 import 'package:numfu/screen/feedback.dart';
-import 'package:numfu/screen/promotion.dart';
-import 'package:numfu/screen/test1.dart';
-import 'package:numfu/screen/text2.dart';
 import 'package:numfu/screen/wallet.dart';
 import 'package:numfu/screen/history.dart';
 import 'package:numfu/screen/index.dart';

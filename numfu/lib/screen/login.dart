@@ -114,13 +114,13 @@ class _LoginState extends State<Login> {
           height: 38,
           child: ElevatedButton(
             style: MyCostant().myButtonStyle(),
-            onPressed: () {
-              if (formKey.currentState!.validate()) {
-                String cust_email = emailController.text;
-                String password = passwordController.text;
-                checkAuthen(cust_email: cust_email, password: password);
-              }
-            },
+            onPressed: _canSubmit
+                ? () {
+                    String cust_email = emailController.text;
+                    String password = passwordController.text;
+                    checkAuthen(cust_email: cust_email, password: password);
+                  }
+                : null,
             child: Text(
               'เข้าสู่ระบบ',
               style: MyCostant().h5button(),
@@ -144,9 +144,7 @@ class _LoginState extends State<Login> {
           if (password == model.password) {
             SharedPreferences preferences =
                 await SharedPreferences.getInstance();
-            preferences.setString('cust_id', model.cust_id);
-            preferences.setString('email', model.cust_email);
-
+            preferences.setString('cust_email', model.cust_email);
             Navigator.pushNamedAndRemoveUntil(
                 context, MyCostant.routeluncher, (route) => false);
           } else {

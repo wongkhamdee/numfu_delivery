@@ -12,6 +12,8 @@ class promotion extends StatefulWidget {
 
 class _promotionState extends State<promotion> {
   @override
+  Query dbRef = FirebaseDatabase.instance.ref().child('promotion');
+
   Widget listItem({required Map promotion}) {
     return Container(
       margin: const EdgeInsets.all(10),
@@ -60,6 +62,16 @@ class _promotionState extends State<promotion> {
       ),
       body: Container(
         height: double.infinity,
+        child: FirebaseAnimatedList(
+          query: dbRef,
+          itemBuilder: (BuildContext context, DataSnapshot snapshot,
+              Animation<double> animation, int index) {
+            Map promotion = snapshot.value as Map;
+            promotion['key'] = snapshot.key;
+
+            return listItem(promotion: promotion);
+          },
+        ),
       ),
     );
   }

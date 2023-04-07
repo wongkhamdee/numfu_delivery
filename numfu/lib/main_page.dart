@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:numfu/screen/Launcher.dart';
 import 'package:numfu/screen/login.dart';
@@ -9,8 +8,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
+      body: StreamBuilder(
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Launcher();

@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,10 +11,9 @@ import 'package:numfu/screen/profile.dart';
 import 'package:numfu/screen/promotion.dart';
 import 'package:numfu/screen/res.dart';
 import 'package:numfu/screen/select_address.dart';
-import 'package:numfu/screen/test1.dart';
 import 'package:numfu/screen/wallet.dart';
 import 'package:numfu/utility/my_constant.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Index extends StatefulWidget {
@@ -145,7 +143,7 @@ class _IndexState extends State<Index> {
     return MaterialButton(
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return ProfilePage();
+          return Login();
         }));
       },
       color: Colors.deepPurple[200],

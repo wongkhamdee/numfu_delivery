@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:numfu/screen/login.dart';
 import 'package:numfu/utility/my_constant.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:numfu/widgets/show_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

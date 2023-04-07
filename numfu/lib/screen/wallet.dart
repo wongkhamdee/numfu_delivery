@@ -37,34 +37,60 @@ class _WalletState extends State<Wallet> {
           child: ListView(
             children: <Widget>[
               buildMywallet(),
-              Text(
-                'ระบุจำนวนเงิน (THB)',
-                style: MyCostant().h2Style(),
-              ),
+              buildText1(),
               buildTopup(size),
               numtop(size: size),
               buildNext(context, size),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                '  ประวัติล่าสุด',
-                style: MyCostant().h2Style(),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: buildHis(),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: buildHis2(),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: buildHis(),
-              ),
+              buildHistory(),
             ],
           )),
+    );
+  }
+}
+
+class buildHistory extends StatelessWidget {
+  const buildHistory({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          height: 10,
+        ),
+        Text(
+          '  ประวัติล่าสุด',
+          style: MyCostant().h2Style(),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+          child: buildHis(),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+          child: buildHis2(),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+          child: buildHis(),
+        ),
+      ],
+    );
+  }
+}
+
+class buildText1 extends StatelessWidget {
+  const buildText1({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'ระบุจำนวนเงิน (THB)',
+      style: MyCostant().h2Style(),
     );
   }
 }

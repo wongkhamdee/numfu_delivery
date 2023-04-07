@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:numfu/main_page.dart';
 import 'package:numfu/screen/Launcher.dart';
+import 'package:numfu/screen/OTP.dart';
+import 'package:numfu/screen/index.dart';
 import 'package:numfu/screen/login.dart';
 import 'package:numfu/utility/my_constant.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 final Map<String, WidgetBuilder> map = {
   '/login': (BuildContext Context) => Login(),
@@ -13,19 +12,18 @@ final Map<String, WidgetBuilder> map = {
 };
 
 String? initlalRoute;
-Future<Null> main() async {
+
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences preferences = await SharedPreferences.getInstance();
-  String? email = preferences.getString('email');
-  print('## email ===> $email');
-  if (email?.isEmpty ?? true) {
-    initlalRoute = MyCostant.routelogin;
-    runApp(MyApp());
-  } else {
-    initlalRoute = MyCostant.routeluncher;
-    runApp(MyApp());
-  }
+
+  initlalRoute = MyCostant.routeluncher;
+  runApp(const MyApp());
 }
+/*void main() async {
+  await Hive.initFlutter();
+  initlalRoute = MyCostant.routelogin;
+  runApp(MyApp());
+}*/
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -33,15 +31,38 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      //debugShowCheckedModeBanner: false,
+
       title: MyCostant.appName,
       routes: map,
-      initialRoute: initlalRoute,
+      //initialRoute: initlalRoute,
       theme: ThemeData(
         fontFamily: 'MN',
+        //textTheme: GoogleFonts.promptTextTheme(Theme.of(context).textTheme),
         primarySwatch: Colors.orange,
         backgroundColor: Colors.white,
       ),
+      home: MainPage(),
     );
   }
 }
+
+
+/*void main() {
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'Numfu',
+        theme: ThemeData(
+          fontFamily: 'MN',
+          //textTheme: GoogleFonts.promptTextTheme(Theme.of(context).textTheme),
+          primarySwatch: Colors.orange,
+          backgroundColor: Colors.white,
+        ),
+        home: Login());
+  }
+}*/

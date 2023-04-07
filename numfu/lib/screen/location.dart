@@ -4,7 +4,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:numfu/screen/select_address.dart';
 import 'package:numfu/utility/my_dialog.dart';
 import 'package:numfu/widgets/show_progress.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:numfu/utility/my_constant.dart';
 import 'package:numfu/widgets/show_title.dart';
 
